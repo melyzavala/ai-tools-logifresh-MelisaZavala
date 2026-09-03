@@ -28,6 +28,8 @@ Se validaron seis controles directamente contra el archivo. El monto de reclamac
 
 ## Matriz de pruebas locales
 
+La suite reproducible `node tests/test-dashboard.mjs` se ejecutó el 3 de septiembre de 2026 con resultado **20/20 pruebas aprobadas**.
+
 | Prueba | Esperado | Obtenido | Estado |
 |---|---:|---:|---|
 | Embarques sin filtros | 240 | 240 | Aprobado |
@@ -47,6 +49,7 @@ Se validaron seis controles directamente contra el archivo. El monto de reclamac
 | Consola del navegador | Sin errores ni advertencias | 0 errores; 0 advertencias | Aprobado |
 | Etiquetas monetarias extensas | Dentro del marco | Reubicación automática al interior de la barra | Aprobado |
 | Contraste de la paleta | ≥4.5:1 en texto clave | 5.09:1–16.24:1 | Aprobado |
+| Suite automática | 20 controles sin fallas | 20/20 aprobados | Aprobado |
 
 ## Validación pública
 
