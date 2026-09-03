@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Dashboard ejecutivo de operaciones de LogiFresh México, abril a junio de 2026.">
+  <title>LogiFresh México | Control operativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="hero">
+    <div class="hero__inner">
+      <div>
+        <p class="eyebrow">CONTROL OPERATIVO · ABR–JUN 2026</p>
+        <h1>LogiFresh México</h1>
+        <p class="hero__copy">¿En qué segmentos concentrar un piloto de mejora de 30 días?</p>
+      </div>
+      <div class="hero__meta" aria-label="Contexto del análisis">
+        <span>240 embarques</span><span>Datos sintéticos</span><span>Actualizado: 2 sep 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="shell">
+    <section class="filters" aria-labelledby="filters-title">
+      <div class="section-heading compact">
+        <div><p class="kicker">Explorar</p><h2 id="filters-title">Filtros operativos</h2></div>
+        <button id="resetFilters" class="button" type="button">Restablecer filtros</button>
+      </div>
+      <div id="filterGrid" class="filter-grid"></div>
+      <p id="filterSummary" class="filter-summary" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="kpi-title">
+      <div class="section-heading"><div><p class="kicker">Pulso ejecutivo</p><h2 id="kpi-title">Servicio, riesgo e impacto</h2></div></div>
+      <div id="kpiGrid" class="kpi-grid"></div>
+    </section>
+
+    <div id="emptyState" class="empty-state" hidden role="status">
+      <strong>Esta combinación no tiene embarques.</strong>
+      <span>Prueba quitar un filtro o restablecer la vista.</span>
+      <button class="button" type="button" data-reset>Restablecer filtros</button>
+    </div>
+
+    <div id="dashboardContent">
+      <section class="chart-grid" aria-label="Visualizaciones principales">
+        <article class="card chart-card chart-card--wide">
+          <div class="card-head"><div><p class="kicker">Evolución temporal</p><h3>SLA semanal</h3></div><span class="unit">% de embarques · meta 90%</span></div>
+          <div id="trendChart" class="chart" role="img" aria-label="Gráfica de línea del SLA semanal"></div>
+        </article>
+        <article class="card chart-card">
+          <div class="card-head"><div><p class="kicker">Comparación</p><h3>SLA por transportista</h3></div><span class="unit">% de embarques</span></div>
+          <div id="slaChart" class="chart" role="img" aria-label="Barras de SLA por transportista"></div>
+        </article>
+        <article class="card chart-card">
+          <div class="card-head"><div><p class="kicker">Frecuencia observada</p><h3>Incidentes registrados</h3></div><span class="unit">embarques</span></div>
+          <div id="incidentChart" class="chart" role="img" aria-label="Barras de incidentes por tipo"></div>
+        </article>
+        <article class="card chart-card chart-card--wide">
+          <div class="card-head"><div><p class="kicker">Impacto económico</p><h3>Reclamaciones por producto</h3></div><span class="unit">MXN · suma</span></div>
+          <div id="claimsChart" class="chart" role="img" aria-label="Barras de reclamaciones por producto"></div>
+        </article>
+      </section>
+
+      <section class="interpretation" aria-labelledby="interpret-title">
+        <div class="section-heading"><div><p class="kicker">De evidencia a acción</p><h2 id="interpret-title">Lectura responsable</h2></div></div>
+        <div class="interpret-grid">
+          <article class="interpret-card fact"><span class="tag">HECHOS</span><h3>Lo que muestran los datos</h3><ul id="factsList"></ul></article>
+          <article class="interpret-card hypothesis"><span class="tag">HIPÓTESIS</span><h3>Lo que falta validar</h3><ul><li>Los segmentos con menor SLA podrían concentrar restricciones operativas específicas.</li><li>Incidentes, excursiones y reclamaciones pueden estar asociados, pero estos datos no demuestran causalidad.</li></ul></article>
+          <article class="interpret-card next"><span class="tag">PRÓXIMO PASO</span><h3>Piloto controlado de 30 días</h3><p id="nextStep">Seleccionar un segmento prioritario, fijar línea base, responsable e intervención; comparar SLA, retraso e incidentes contra el periodo basal.</p><p class="success-criterion"><strong>Criterio sugerido:</strong> mejora ≥5 puntos porcentuales de SLA sin aumentar excursiones ni reclamaciones.</p></article>
+        </div>
+      </section>
+
+      <section class="card table-card" aria-labelledby="detail-title">
+        <div class="card-head"><div><p class="kicker">Trazabilidad</p><h2 id="detail-title">Detalle filtrado</h2></div><span id="tableCount" class="unit"></span></div>
+        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Fecha</th><th>Ruta</th><th>Producto</th><th>Transportista</th><th>SLA</th><th>Retraso</th><th>Incidente</th><th>Temp. máx.</th><th>Reclamación</th></tr></thead><tbody id="detailBody"></tbody></table></div>
+        <p class="table-note">Se muestran hasta 50 registros. Los KPIs y gráficos consideran toda la selección.</p>
+      </section>
+    </div>
+
+    <section class="method" aria-labelledby="method-title">
+      <div><p class="kicker">Definiciones y límites</p><h2 id="method-title">Cómo leer esta vista</h2></div>
+      <div class="method-grid">
+        <p><strong>SLA:</strong> embarques “Cumple” / total seleccionado. Meta de referencia: <strong>90%</strong>.</p>
+        <p><strong>Retraso promedio:</strong> media de retraso_min únicamente cuando es mayor que cero.</p>
+        <p><strong>Fuente:</strong> LogiFreshDatos.xlsx, datos sintéticos sin información personal.</p>
+        <p><strong>Corrección autorizada:</strong> LF-0224, reclamación de $4,399 a $4,499 MXN para reconciliar el control.</p>
+        <p><strong>Limitación:</strong> no incluye causa raíz validada, tiempos por etapa, clima, tráfico externo ni costo de intervención.</p>
+        <p><strong>Uso responsable:</strong> asociaciones observadas sirven para formular hipótesis; no justifican causalidad ni sanciones.</p>
+      </div>
+    </section>
+  </main>
+  <footer>LogiFresh México · Producto académico basado en información sintética · Abril–junio de 2026</footer>
+</body>
+</html>
+
