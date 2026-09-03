@@ -1,6 +1,6 @@
 # Reporte de validación — LogiFresh México
 
-**Estado antes de publicación:** aprobado localmente  
+**Estado final:** aprobado y publicado  
 **Periodo:** abril–junio de 2026  
 **Fuente:** `LogiFreshDatos.xlsx`, información sintética  
 **Fecha de validación:** 2 de septiembre de 2026
@@ -48,6 +48,14 @@ Se validaron seis controles directamente contra el archivo. El monto de reclamac
 | Etiquetas monetarias extensas | Dentro del marco | Reubicación automática al interior de la barra | Aprobado |
 | Contraste de la paleta | ≥4.5:1 en texto clave | 5.09:1–16.24:1 | Aprobado |
 
+## Validación pública
+
+- Repositorio público: `https://github.com/melyzavala/ai-tools-logifresh-MelisaZavala`
+- GitHub Pages: `https://melyzavala.github.io/ai-tools-logifresh-MelisaZavala/`
+- La página y sus recursos estáticos cargaron correctamente desde GitHub Pages.
+- Se repitieron en la URL pública los controles sin filtros, filtro de abril, combinación abril + Centro, restablecimiento y estado sin resultados.
+- Se verificó la vista de 390 × 844 px, sin desbordamiento del layout, y la consola del navegador registró 0 errores y 0 advertencias.
+
 ## Hallazgos
 
 1. El SLA agregado es 76.7%, 13.3 puntos porcentuales por debajo de la meta de 90%.
@@ -75,6 +83,6 @@ Priorizar una cohorte operativa de junio y un segmento con suficiente volumen; r
 
 **Verificaciones:** datos, fórmulas, filtros, intersecciones, estado vacío, responsividad, desbordamientos, contraste, accesibilidad básica y errores de navegador.
 **Supuesto autorizado:** corrección de $100 en LF-0224.
-**Límite:** las pruebas públicas de GitHub Pages deben añadirse después de publicar.
-**Estado:** aprobado localmente; publicación pendiente de autorización.
+**Límite:** los datos son sintéticos y no permiten atribuir causalidad ni validar una causa raíz operativa.
+**Estado:** aprobado; repositorio público y GitHub Pages verificados.
 
